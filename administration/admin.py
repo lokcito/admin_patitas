@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Provider
+from .models import Provider, Customer, Pet
 from django.utils.html import format_html
 # Register your models here.
 
@@ -22,6 +22,47 @@ class ProviderAdmin(admin.ModelAdmin):
 
     @admin.display(description="Identificador")
     def identificador(self, obj):
+        if obj.main_photo:
+            return format_html('<img src={} style="width: 64px;" /><br />' + str(obj.id), 
+                            obj.main_photo.url)
+        return obj.id
+
+
+class PetInline(admin.TabularInline):
+    model = Pet
+    extra = 1
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ("identificador", "nombres", "apellidos_xyz", "direccion")
+    inlines = [PetInline] #<-----
+
+    @admin.display(description="Identificador")
+    def identificador(self, obj):
+        return obj.id
+
+    @admin.display(description="Nombres")
+    def nombres(self, obj):
+        return obj.first_name
+
+    @admin.display(description="Direccion")
+    def direccion(self, obj):
+        return obj.address
+
+    @admin.display(description="Apellidos")
+    def apellidos_xyz(self, obj):
+        return obj.last_name
+
+@admin.register(Pet)
+class PetAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'foto')
+
+    @admin.display(description='Nombre')
+    def nombre(self, obj):
+        return obj.name
+    
+    @admin.display(description="Foto")
+    def foto(self, obj):
         if obj.main_photo:
             return format_html('<img src={} style="width: 64px;" /><br />' + str(obj.id), 
                             obj.main_photo.url)
