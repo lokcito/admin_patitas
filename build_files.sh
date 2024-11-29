@@ -19,3 +19,6 @@ python manage.py collectstatic --noinput --clear
 
 echo "Sync database..."
 python manage.py migrate
+
+echo "Superuser..."
+python manage.py seeds
