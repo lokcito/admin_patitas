@@ -134,3 +134,24 @@ STATIC_ROOT = BASE_DIR/"staticfiles/static"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#-------------------------
+# Instalación de la app de almacenamiento en Cloudinary
+INSTALLED_APPS += [
+    "cloudinary",
+    "cloudinary_storage",
+]
+
+# Configuración de Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dz38cfbxf',
+    'API_KEY': '267521863576911',
+    'API_SECRET': 'e2CCzgbxr8XcxfVBIv8MCEGYkiE',
+}
+# Almacenamiento predeterminado para archivos multimedia
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Opcional: puedes dejarlo vacío o personalizarlo para referenciar Cloudinary si lo deseas
+MEDIA_URL = 'https://res.cloudinary.com/dz38cfbxf/media/'  # Solo si prefieres un URL base para archivos
+MEDIA_ROOT = ""

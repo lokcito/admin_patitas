@@ -18,10 +18,6 @@
             "dest": "/static/$1"
         },
         {
-            "src": "/media/(.*)",
-            "dest": "/tmp/$1"
-        },
-        {
             "src": "/(.*)",
             "dest": "admin_patitas/wsgi.py"
         }
