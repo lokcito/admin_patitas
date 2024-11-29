@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "pyuploadcare.dj",
+    "uploadcare",
     'administration'
 ]
 
@@ -131,20 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #-------------------------
-# Instalación de la app de almacenamiento en Cloudinary
-INSTALLED_APPS += [
-    "cloudinary_storage",
-    "cloudinary",
-]
 
-# Configuración de Cloudinary
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dz38cfbxf',
-    'API_KEY': '267521863576911',
-    'API_SECRET': 'e2CCzgbxr8XcxfVBIv8MCEGYkiE',
+
+
+
+
+UPLOADCARE = {
+    "pub_key": "520b7d13a9ea9157ecaa",
+    "secret": "36aa06838e885adb6ce1",
+    "use_legacy_widget": False,
 }
-# Almacenamiento predeterminado para archivos multimedia
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Opcional: puedes dejarlo vacío o personalizarlo para referenciar Cloudinary si lo deseas
-MEDIA_URL = 'https://res.cloudinary.com/dz38cfbxf/media/'  # Solo si prefieres un URL base para archivos
