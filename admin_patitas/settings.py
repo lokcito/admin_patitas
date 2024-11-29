@@ -24,8 +24,10 @@ SECRET_KEY = 'django-insecure-e1ch4ibex+_8udnei929yv4v_49m)wr+y!exrkh_@akv*jh=s3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+import os
 ALLOWED_HOSTS = ["*"]
+if os.environ.get("GITPOD_WORKSPACE_URL", "") != "":
+    CSRF_TRUSTED_ORIGINS = [os.environ.get("GITPOD_WORKSPACE_URL", "").replace("https://", "https://8000-")]
 
 
 # Application definition
@@ -37,9 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "pyuploadcare.dj",
-    "uploadcare",
-    'administration'
+    'administration',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -134,12 +135,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #-------------------------
 
+from storages.backends.ftp import FTPStorage
 
-
-
-
-UPLOADCARE = {
-    "pub_key": "520b7d13a9ea9157ecaa",
-    "secret": "36aa06838e885adb6ce1",
-    "use_legacy_widget": False,
+# Configuración del almacenamiento FTP
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+    "default": {
+        "BACKEND": "storages.backends.ftp.FTPStorage",
+        "OPTIONS": {
+            "location": "ftp://natureza_aaa:*12A11!vv@ftp-natureza.alwaysdata.net:21/",
+        },
+    },
 }
+
+
+# Configurar MEDIA_URL para servir los archivos subidos
+MEDIA_URL = 'https://natureza.alwaysdata.net/'
+
