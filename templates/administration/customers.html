@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+<section>
+    <div class="card">
+        <div class="card-body">Clientes</div>
+        <table class="table table-bordered w-100">
+            <tbody>
+                {% for cliente in customers_list %}
+                <tr>
+                    <td>{{ cliente.first_name }}</td>
+                    <td>{{ cliente.last_name }}</td>
+                    <td>{{ cliente.address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
