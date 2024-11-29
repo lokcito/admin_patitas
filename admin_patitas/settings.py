@@ -119,7 +119,8 @@ MEDIA_URL = '/media/'
 if DEBUG:
     MEDIA_ROOT = BASE_DIR / 'mediafiles'
 else:
-    MEDIA_ROOT = '/tmp'
+    pass
+MEDIA_ROOT = '/tmp'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
