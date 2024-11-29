@@ -139,8 +139,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #-------------------------
 # Instalación de la app de almacenamiento en Cloudinary
 INSTALLED_APPS += [
-    "cloudinary",
     "cloudinary_storage",
+    "cloudinary",
 ]
 
 # Configuración de Cloudinary
@@ -154,4 +154,3 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Opcional: puedes dejarlo vacío o personalizarlo para referenciar Cloudinary si lo deseas
 MEDIA_URL = 'https://res.cloudinary.com/dz38cfbxf/media/'  # Solo si prefieres un URL base para archivos
-MEDIA_ROOT = ""
