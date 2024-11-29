@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'admin_patitas.wsgi.application'
+WSGI_APPLICATION = 'admin_patitas.wsgi.app'
 
 
 # Database
@@ -116,13 +116,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+if DEBUG:
+    MEDIA_ROOT = BASE_DIR / 'mediafiles'
+else:
+    MEDIA_ROOT = '/tmp'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+STATIC_ROOT = BASE_DIR/"staticfiles/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
