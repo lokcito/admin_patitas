@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e1ch4ibex+_8udnei929yv4v_49m)wr+y!exrkh_@akv*jh=s3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -73,14 +73,13 @@ WSGI_APPLICATION = 'admin_patitas.wsgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'patitas_db',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'tHCEBJLGY5c8',
+        'HOST': 'ep-winter-credit-a5kpcpq5.us-east-2.aws.neon.tech',
         'PORT': '5432' # de uso comun
     }
 }
